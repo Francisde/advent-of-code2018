@@ -1,15 +1,30 @@
+def solvePartOne(frequencyList):
+    result = 0
+    for freq in frequencyList:
+        result += int(freq)
+    return result
 
-file1 = open('test.txt', 'r')
+def solvePartTwo(frequencyList):
+    resultList = []
+    result = 0
+    while True:
+        for freq in frequencyList:
+            result += int(freq)
+            if result in resultList:
+                return result
+            else:
+                resultList.append(result)
+
+file1 = open('puzzle.txt', 'r')
 Lines = file1.readlines()
 
-count = 0
+frequencys = []
 
 for line in Lines:
     input_line= line.strip()
-    print("Line {}: {}".format(count, input_line))
-    count += 1
+    frequencys.append(input_line)
 
 
-print("TASK 1 - ")
+print("TASK 1 - frequency: {}".format(solvePartOne(frequencys)))
 
-print("TASK 2 - ")
+print("TASK 2 - frequency: {}".format(solvePartTwo(frequencys)))
